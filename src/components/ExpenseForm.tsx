@@ -19,7 +19,7 @@ export default function ExpenseForm() {
         date: new Date()
     })
 
-    const [error,seetError] = useState("")
+    const [error,setError] = useState("")
     const {dispatch}= useBudget()
 
     const handleChangeDate = (value : Value) =>{
@@ -39,8 +39,9 @@ export default function ExpenseForm() {
     }
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+       e.preventDefault()
         if(Object.values(expense).includes("")){
-            seetError("Todos los campos son obligatorios")
+            setError("Todos los campos son obligatorios")
             return
         }
 
